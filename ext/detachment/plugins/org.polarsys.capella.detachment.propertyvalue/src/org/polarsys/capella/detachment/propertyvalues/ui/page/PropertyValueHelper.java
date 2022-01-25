@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
@@ -41,7 +42,7 @@ public class PropertyValueHelper {
 			RegistryElement regElt = analysis.getRegistryElement(id);	
 			return regElt.getFinders();
 		} catch (ModelScrutinyException e) {
-			Status status = new Status(IStatus.ERROR, Activator.getDefault().getBundle().getSymbolicName(), e.getMessage(), e);
+			Status status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(Activator.class).getSymbolicName(), e.getMessage(), e);
 			Platform.getLog(Activator.class).log(status);
 		}
 		return Collections.emptySet();
