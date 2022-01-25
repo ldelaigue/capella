@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.HashSet;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -41,7 +42,7 @@ public class PropertyValueHelper {
 			return regElt.getFinders();
 		} catch (ModelScrutinyException e) {
 			Status status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
-			Activator.getDefault().getLog().log(status);
+			Platform.getLog(Activator.class).log(status);
 		}
 		return Collections.emptySet();
 	}
