@@ -12,7 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.test.semantic.ui.ju.testcases;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.polarsys.capella.test.semantic.ui.ju.AbstractSemanticBrowserUITest;
@@ -60,6 +62,11 @@ public class SBNavigationMenuPPTest extends AbstractSemanticBrowserUITest {
     public static final String PPD_PHYSICAL_REFING_SEM = "f3e7feae-d856-4a8d-a615-8279dd032a44"; //$NON-NLS-1$
     
     public static final String PPD_PHYSICAL_REFED_SEM = "5617d352-e160-49bc-9415-f0b830677ac2"; //$NON-NLS-1$
+
+    @Override
+    public List<String> getRequiredTestModels() {
+        return Collections.singletonList("DiagramNavigationModel");
+    }
     
     @Override
     public void test() throws Exception {

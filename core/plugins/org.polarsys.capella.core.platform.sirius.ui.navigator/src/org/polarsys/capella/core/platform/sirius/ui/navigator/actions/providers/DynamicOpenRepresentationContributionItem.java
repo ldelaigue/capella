@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -40,6 +40,7 @@ import org.eclipse.ui.services.IServiceLocator;
 import org.polarsys.capella.core.data.cs.PhysicalPathReference;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
+import org.polarsys.capella.core.data.interaction.InteractionUse;
 import org.polarsys.capella.core.menu.dynamic.DynamicActionProvider;
 import org.polarsys.capella.core.menu.dynamic.DynamicCreationAction;
 import org.polarsys.capella.core.sirius.ui.actions.OpenRepresentationsAction;
@@ -126,7 +127,8 @@ public class DynamicOpenRepresentationContributionItem extends CompoundContribut
     private boolean hasDerivedOpenRepresentationContribution(EObject semanticElement) {
         return (semanticElement instanceof AbstractCapability) || 
                 (semanticElement instanceof FunctionalChainReference) || 
-                (semanticElement instanceof PhysicalPathReference);
+                (semanticElement instanceof PhysicalPathReference) ||
+                (semanticElement instanceof InteractionUse);
     }
     
     private void addDerivedOpenRepresentationActions(EObject semanticElement, IMenuManager menu, Session currentSession, Collection<Viewpoint> selectedViewpoints) {
@@ -152,6 +154,8 @@ public class DynamicOpenRepresentationContributionItem extends CompoundContribut
             } else if (semanticElement instanceof PhysicalPathReference) {
                 derivedElements.add(((PhysicalPathReference) semanticElement).getReferencedPhysicalPath());
             }
+        } else if (semanticElement instanceof InteractionUse && representationDescription instanceof SequenceDiagramDescription) {
+            derivedElements.add(((InteractionUse)semanticElement).getReferencedScenario());
         }
         for (EObject object : derivedElements) {
             Collection<DRepresentationDescriptor> repDescScenario = DialectManager.INSTANCE.getRepresentationDescriptors(object, currentSession);
