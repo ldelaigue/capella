@@ -60,7 +60,7 @@ location eclipse "http://download.eclipse.org/releases/2021-06" {
 	ch.qos.logback.slf4j
 }
 
-location Xerces-2.12.2 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202204130739" {
+location Xerces-2.12.2 "https://download.eclipse.org/tools/orbit/downloads/2022-12/" {
 	org.apache.xerces
 }
 
