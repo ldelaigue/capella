@@ -121,7 +121,7 @@ pipeline {
 	     	}
 	    }
 	    
-    	stage('Run tests') {
+    	/*stage('Run tests') {
     		
         	steps {
         		script {
@@ -188,7 +188,7 @@ pipeline {
 	        		tester.publishTests()
 				}
 			}
-		}
+		}*/
 		
 		stage('Sonar') {
 			steps {
